@@ -38,6 +38,7 @@ class MovieModel extends MovieEntity {
     required this.backgroundImage,
     required this.backgroundImageOriginal,
   }) : super(
+          id: id,
           name: title,
           image: backgroundImageOriginal,
           genresList: genres,

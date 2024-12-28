@@ -54,6 +54,7 @@ class DependencyInjection {
       ..registerLazySingleton<MoviesRepository>(
         () => MoviesRepositoryImpl(
           moviesDataSource: getItInstance<MoviesRemoteDataSource>(),
+          localDataSource: getItInstance<LocalDataSource>(),
         ),
       )
 

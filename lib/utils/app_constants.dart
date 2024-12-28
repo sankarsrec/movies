@@ -5,6 +5,7 @@ class AppConstants {
 
   /// Text Constants should be moved to ARB files to support multiple languages
   static const String moviesApp = 'Movies';
+  static const String searchMovies = 'Search Movies';
   static const String noData = 'No movies found';
   static const String errorMessage =
       'Unable to fetch movies. Kindly try again later';

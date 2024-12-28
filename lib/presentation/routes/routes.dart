@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/dependency_injection/dependency_injection.dart';
+import 'package:movies/domain/use_cases/local/local_use_case.dart';
 import 'package:movies/domain/use_cases/movies/get_movies_use_case.dart';
 import 'package:movies/presentation/screens/movies/cubit/movies_cubit.dart';
 
@@ -25,6 +26,7 @@ class Routes {
         screen = BlocProvider(
           create: (context) => MoviesCubit(
             getMoviesUseCase: getItInstance<GetMoviesUseCase>(),
+            localUseCase: getItInstance<LocalUseCase>(),
           ),
           child: const MoviesScreen(),
         );

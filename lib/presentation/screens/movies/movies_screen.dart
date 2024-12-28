@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies/domain/entities/movie_entity.dart';
+import 'package:movies/utils/app_colors.dart';
 import 'package:movies/utils/app_constants.dart';
 
 import '../../widgets/empty_widget.dart';
@@ -15,21 +17,32 @@ class MoviesScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        title: Text(
+          AppConstants.moviesApp,
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                color: AppColors.white,
+              ),
+        ),
+        backgroundColor: AppColors.primaryColor,
       ),
+      backgroundColor: AppColors.primaryColor,
       body: BlocBuilder<MoviesCubit, MoviesState>(
         bloc: context.read<MoviesCubit>()..getAllMovies(),
         builder: (context, state) {
+          List<MovieEntity> moviesToShow =
+              state.isSearch ? state.searchedMovies : state.allMovies;
+
           if (state.isLoading) {
             return const Center(
               child: CupertinoActivityIndicator(),
             );
           } else {
-            return state.allMovies.isEmpty
+            return moviesToShow.isEmpty && !state.isSearch
                 ? EmptyWidget(
                     message: AppConstants.noData,
                   )
                 : MoviesView(
-                    allMovies: state.allMovies,
+                    allMovies: moviesToShow,
                   );
           }
         },

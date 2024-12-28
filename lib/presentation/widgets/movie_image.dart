@@ -20,8 +20,8 @@ class MovieImage extends StatelessWidget {
       imageUrl: imageUrl,
       width: MediaQuery.of(context).size.width,
       placeholder: (BuildContext context, String imageUrl) {
-        return const LoadingWidget(
-          child: Card(
+        return LoadingWidget(
+          child: Container(
             color: AppColors.mercury,
           ),
         );
@@ -29,10 +29,10 @@ class MovieImage extends StatelessWidget {
       errorWidget: (BuildContext context, String imageUrl, dynamic error) {
         return Container(
           alignment: Alignment.center,
-          color: AppColors.grey,
+          color: AppColors.white,
           child: Center(
             child: Text(
-              name,
+              name.substring(0, 1).toUpperCase(),
               style: Theme.of(context).textTheme.headlineLarge,
               textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,

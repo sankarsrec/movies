@@ -11,7 +11,7 @@ class CustomToast {
     Fluttertoast.showToast(
       msg: title,
       toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.CENTER,
+      gravity: ToastGravity.BOTTOM,
       timeInSecForIosWeb: 5,
       backgroundColor: isError ? AppColors.red : AppColors.grey,
       textColor: AppColors.white,
